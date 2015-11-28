@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PartyProject.Models.EntertainerDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fistname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Town)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location.Location1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skill.Skill1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fistname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StreetAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Town)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location.Location1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skill.Skill1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EntertainerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EntertainerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EntertainerID })
+        </td>
+    </tr>
+}
+
+</table>
