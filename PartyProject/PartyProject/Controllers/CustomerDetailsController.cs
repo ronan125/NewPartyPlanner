@@ -21,6 +21,12 @@ namespace PartyProject.Controllers
             return View(customerDetails.ToList());
         }
 
+        //Get: Customer Portal
+        public ActionResult CustomerPortal()
+        {
+            return View("CustomerPortal");
+        }
+
         // GET: CustomerDetails/Details/5
         public ActionResult Details(int? id)
         {
