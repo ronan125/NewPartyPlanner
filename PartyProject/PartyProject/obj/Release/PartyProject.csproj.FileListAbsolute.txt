@@ -42,3 +42,47 @@ c:\users\ronan\documents\visual studio 2015\Projects\PartyProject\PartyProject\b
 c:\users\ronan\documents\visual studio 2015\Projects\PartyProject\PartyProject\obj\Release\PartyProject.dll
 c:\users\ronan\documents\visual studio 2015\Projects\PartyProject\PartyProject\obj\Release\PartyProject.pdb
 c:\users\ronan\documents\visual studio 2015\Projects\PartyProject\PartyProject\obj\Release\PartyProject.csprojResolveAssemblyReference.cache
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\csc.exe
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\vbc.exe
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\VBCSCompiler.exe
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\PartyProject.dll.config
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\PartyProject.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\PartyProject.pdb
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\Antlr3.Runtime.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\EntityFramework.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\EntityFramework.SqlServer.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\Newtonsoft.Json.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.Helpers.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.Mvc.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.Optimization.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.Razor.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.WebPages.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.WebPages.Razor.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\WebGrease.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\EntityFramework.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\EntityFramework.SqlServer.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.Helpers.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.Mvc.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.Optimization.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.Razor.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.WebPages.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\System.Web.WebPages.Razor.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\Antlr3.Runtime.pdb
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\Newtonsoft.Json.xml
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\obj\Release\PartyProject.csprojResolveAssemblyReference.cache
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\obj\Release\PartyProject.dll
+C:\Users\Stuart\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\obj\Release\PartyProject.pdb

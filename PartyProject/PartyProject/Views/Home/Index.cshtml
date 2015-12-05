@@ -2,30 +2,94 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<script src="scripts\jquery-2.1.4.min.js"></script>
+<script src="scripts\bootstrap.min.js"></script>
+
+<style>
+    .dropdown-menu > li > a {
+        text-align: center;
+        width: 300px;
+        font-size: 20px;
+    }
+
+    #dropdownBtn {
+        width: 300px;
+    }
+</style>
+
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="~/Content/Images/PartyPlanner.jpg" class="img-responsive center-block" />
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-sm-12 text-center">
+    <form action="http://google.com">
+
+
+        <div class="btn-group">
+            <button id="dropdownBtn" type="button" data-toggle="dropdown" class="btn btn-info btn-lg data-toggle">Choose Entertainer <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Magican</a></li>
+                <li><a href="#">Juggler</a></li>
+                <li><a href="#">Comedian</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div>
+
+
+
+        <div class="btn-group">
+            <button id="dropdownBtn" type="button" data-toggle="dropdown" class="btn btn-success btn-lg data-toggle">Choose Location <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Dublin</a></li>
+                <li><a href="#"> Cork </a></li>
+                <li><a href="#">Galway</a></li>
+
+                <li class="divider"></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div>
+
+        <br />
+        <br />
+
+        <br />
+        <button id="dropdownBtn" type="button" class="btn btn-danger">Search </button>
+        @*<a class="btn btn-danger btn-warning btn-lg" href="http://www.google.ie" role="button"  font size="15">Search</a>*@
+
+
+
+    </form>
+
+
+    <br />
+    <br />
+
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <div>
-            @Html.ActionLink("Add Customer", "Index", "CustomerDetails")<br />
-            @Html.ActionLink("Add Entertainer", "Index", "EntertainerDetails")<br />
-            @Html.ActionLink("Add Skill", "Index", "Skills")
+    <div class="col-md-6">
+        <div class="panel">
+
+            <img src="~/Content/Images/Ballons.png" class="img-reponsive center-block" />
+
+            @Html.ActionLink("Customer Portal", "CustomerPortal", "Customer", null, new { @class = "btn btn-warning btn-block" })
         </div>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div class="col-md-6">
+        <div class="panel">
+
+            <img src="~/Content/Images/EntertainerLogin.bmp" class="img-reponsive center-block" />
+
+            @Html.ActionLink("Entertainer Portal", "EntertainerPortal", "Entertainer", null, new { @class = "btn btn-warning btn-block" })
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
 </div>
