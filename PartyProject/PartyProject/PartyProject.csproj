@@ -141,10 +141,13 @@
     <Compile Include="Models\CustomerDetail.cs">
       <DependentUpon>PartyProjectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustView.cs">
+      <DependentUpon>PartyProjectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EntertainerDetail.cs">
       <DependentUpon>PartyProjectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Location.cs">
+    <Compile Include="Models\EntView.cs">
       <DependentUpon>PartyProjectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PartyProjectModel.Context.cs">
@@ -165,7 +168,13 @@
     <Compile Include="Models\RelatedSkill.cs">
       <DependentUpon>PartyProjectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Skill.cs">
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>PartyProjectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLocation.cs">
+      <DependentUpon>PartyProjectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSkill.cs">
       <DependentUpon>PartyProjectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -250,6 +259,7 @@
     <Content Include="Views\Skills\Index.cshtml" />
     <Content Include="Views\CustomerDetails\CustomerPortal.cshtml" />
     <Content Include="Views\EntertainerDetails\EntertainerPortal.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

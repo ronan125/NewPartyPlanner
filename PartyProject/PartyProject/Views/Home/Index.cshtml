@@ -28,50 +28,27 @@
 
 
 <div class="col-sm-12 text-center">
-    <form action="http://google.com">
 
 
-        <div class="btn-group">
-            <button id="dropdownBtn" type="button" data-toggle="dropdown" class="btn btn-info btn-lg data-toggle">Choose Entertainer <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Magican</a></li>
-                <li><a href="#">Juggler</a></li>
-                <li><a href="#">Comedian</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Other</a></li>
-            </ul>
-        </div>
+    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
 
+    {
+        @Html.DropDownList("Locs", (SelectList)ViewBag.Locs, "Select Location", new { @class = "form-control dropdown-db" })  <br /><br />
+        @Html.DropDownList("Skil", (SelectList)ViewBag.Skil, "Select Entertainer", new { @class = "form-control dropdown-db" }) <br /><br />
 
+        <input type="Submit" name="Search" value="Search" class="btn btn-primary " />
+    }
 
-        <div class="btn-group">
-            <button id="dropdownBtn" type="button" data-toggle="dropdown" class="btn btn-success btn-lg data-toggle">Choose Location <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Dublin</a></li>
-                <li><a href="#"> Cork </a></li>
-                <li><a href="#">Galway</a></li>
-
-                <li class="divider"></li>
-                <li><a href="#">Other</a></li>
-            </ul>
-        </div>
-
-        <br />
-        <br />
-
-        <br />
-        <button id="dropdownBtn" type="button" class="btn btn-danger">Search </button>
-        @*<a class="btn btn-danger btn-warning btn-lg" href="http://www.google.ie" role="button"  font size="15">Search</a>*@
-
-
-
-    </form>
-
-
+    <br />
+    <br />
     <br />
     <br />
 
 </div>
+
+
+
+
 
 <div class="row">
     <div class="col-md-6">

@@ -5,14 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="63e4ae424e614ab59abbbe7f66ca3f0b" Name="Diagram1">
-        <EntityTypeShape EntityType="TeamProjectModel.CustomerDetail" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeamProjectModel.EntertainerDetail" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeamProjectModel.Location" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeamProjectModel.RelatedSkill" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeamProjectModel.Skill" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="TeamProjectModel.FK_CustomerDetails_Location" ManuallyRouted="false" />
-        <AssociationConnector Association="TeamProjectModel.FK_EntertainerDetails_Location" ManuallyRouted="false" />
-        <AssociationConnector Association="TeamProjectModel.FK_EntertainerDetails_Skill3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TeamProjectModel.CustomerDetail" Width="1.5" PointX="5.875" PointY="6.75" />
+        <EntityTypeShape EntityType="TeamProjectModel.EntertainerDetail" Width="1.5" PointX="6.375" PointY="2.875" />
+        <EntityTypeShape EntityType="TeamProjectModel.RelatedSkill" Width="1.5" PointX="8.625" PointY="0.625" />
+        <EntityTypeShape EntityType="TeamProjectModel.sysdiagram" Width="1.5" PointX="8.625" PointY="3.625" />
+        <EntityTypeShape EntityType="TeamProjectModel.tblLocation" Width="1.5" PointX="3.625" PointY="3.375" />
+        <EntityTypeShape EntityType="TeamProjectModel.tblSkill" Width="1.5" PointX="3.625" PointY="0.5" />
+        <EntityTypeShape EntityType="TeamProjectModel.CustView" Width="1.5" PointX="8.625" PointY="6.625" />
+        <AssociationConnector Association="TeamProjectModel.FK_CustomerDetails_Location" />
+        <AssociationConnector Association="TeamProjectModel.FK_EntertainerDetails_Location" />
+        <AssociationConnector Association="TeamProjectModel.FK_EntertainerDetails_Skill3" />
+        <EntityTypeShape EntityType="TeamProjectModel.EntView" Width="1.5" PointX="11" PointY="1.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

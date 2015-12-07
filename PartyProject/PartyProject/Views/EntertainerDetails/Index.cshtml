@@ -30,10 +30,10 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Location.Location1)
+            @Html.DisplayNameFor(model => model.tblLocation.Location)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Skill.Skill1)
+            @Html.DisplayNameFor(model => model.tblSkill.Skill)
         </th>
         <th></th>
     </tr>
@@ -59,10 +59,10 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Location.Location1)
+            @Html.DisplayFor(modelItem => item.tblLocation.Location)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Skill.Skill1)
+            @Html.DisplayFor(modelItem => item.tblSkill.Skill)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EntertainerID }) |

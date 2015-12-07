@@ -25,14 +25,7 @@
     <Property Name="County" Type="int" Nullable="false" />
     <Property Name="Phone" Type="int" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="Skill1" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Location">
-    <Key>
-      <PropertyRef Name="LocationID" />
-    </Key>
-    <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+    <Property Name="Skill" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RelatedSkill">
     <Key>
@@ -42,18 +35,81 @@
     <Property Name="SID" Type="int" />
     <Property Name="EntertainerID" Type="int" />
   </EntityType>
-  <EntityType Name="Skill">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblLocation">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblSkill">
     <Key>
       <PropertyRef Name="SkillID" />
     </Key>
     <Property Name="SkillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Skill" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TeamProject.dbo.CustView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CustView">
+    <Key>
+      <PropertyRef Name="Firstname" />
+      <PropertyRef Name="Lastname" />
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="County" />
+    </Key>
+    <Property Name="Firstname" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LocationID" Type="int" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+    <Property Name="County" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TeamProject.dbo.EntView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EntView">
+    <Key>
+      <PropertyRef Name="Skill" />
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="Fistname" />
+      <PropertyRef Name="Lastname" />
+      <PropertyRef Name="EntertainerID" />
+      <PropertyRef Name="StreetAddress" />
+      <PropertyRef Name="Town" />
+      <PropertyRef Name="County" />
+      <PropertyRef Name="Phone" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="SkillID" />
+    </Key>
+    <Property Name="Skill" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+    <Property Name="LocationID" Type="int" Nullable="false" />
+    <Property Name="Fistname" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EntertainerID" Type="int" Nullable="false" />
+    <Property Name="StreetAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Town" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="County" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+    <Property Name="SkillID" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="FK_CustomerDetails_Location">
-    <End Role="Location" Type="Self.Location" Multiplicity="1" />
+    <End Role="tblLocation" Type="Self.tblLocation" Multiplicity="1" />
     <End Role="CustomerDetails" Type="Self.CustomerDetails" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Location">
+      <Principal Role="tblLocation">
         <PropertyRef Name="LocationID" />
       </Principal>
       <Dependent Role="CustomerDetails">
@@ -62,10 +118,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_EntertainerDetails_Location">
-    <End Role="Location" Type="Self.Location" Multiplicity="1" />
+    <End Role="tblLocation" Type="Self.tblLocation" Multiplicity="1" />
     <End Role="EntertainerDetails" Type="Self.EntertainerDetails" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Location">
+      <Principal Role="tblLocation">
         <PropertyRef Name="LocationID" />
       </Principal>
       <Dependent Role="EntertainerDetails">
@@ -74,33 +130,60 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_EntertainerDetails_Skill3">
-    <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+    <End Role="tblSkill" Type="Self.tblSkill" Multiplicity="1" />
     <End Role="EntertainerDetails" Type="Self.EntertainerDetails" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Skill">
+      <Principal Role="tblSkill">
         <PropertyRef Name="SkillID" />
       </Principal>
       <Dependent Role="EntertainerDetails">
-        <PropertyRef Name="Skill1" />
+        <PropertyRef Name="Skill" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="TeamProjectModelStoreContainer">
     <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EntertainerDetails" EntityType="Self.EntertainerDetails" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RelatedSkill" EntityType="Self.RelatedSkill" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLocation" EntityType="Self.tblLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSkill" EntityType="Self.tblSkill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustView" EntityType="Self.CustView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CustView].[Firstname] AS [Firstname], 
+    [CustView].[Lastname] AS [Lastname], 
+    [CustView].[LocationID] AS [LocationID], 
+    [CustView].[Location] AS [Location], 
+    [CustView].[County] AS [County]
+    FROM [dbo].[CustView] AS [CustView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EntView" EntityType="Self.EntView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EntView].[Skill] AS [Skill], 
+    [EntView].[Location] AS [Location], 
+    [EntView].[LocationID] AS [LocationID], 
+    [EntView].[Fistname] AS [Fistname], 
+    [EntView].[Lastname] AS [Lastname], 
+    [EntView].[EntertainerID] AS [EntertainerID], 
+    [EntView].[StreetAddress] AS [StreetAddress], 
+    [EntView].[Town] AS [Town], 
+    [EntView].[County] AS [County], 
+    [EntView].[Phone] AS [Phone], 
+    [EntView].[Email] AS [Email], 
+    [EntView].[Expr1] AS [Expr1], 
+    [EntView].[SkillID] AS [SkillID]
+    FROM [dbo].[EntView] AS [EntView]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_CustomerDetails_Location" Association="Self.FK_CustomerDetails_Location">
-      <End Role="Location" EntitySet="Location" />
+      <End Role="tblLocation" EntitySet="tblLocation" />
       <End Role="CustomerDetails" EntitySet="CustomerDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_EntertainerDetails_Location" Association="Self.FK_EntertainerDetails_Location">
-      <End Role="Location" EntitySet="Location" />
+      <End Role="tblLocation" EntitySet="tblLocation" />
       <End Role="EntertainerDetails" EntitySet="EntertainerDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_EntertainerDetails_Skill3" Association="Self.FK_EntertainerDetails_Skill3">
-      <End Role="Skill" EntitySet="Skill" />
+      <End Role="tblSkill" EntitySet="tblSkill" />
       <End Role="EntertainerDetails" EntitySet="EntertainerDetails" />
     </AssociationSet>
   </EntityContainer>

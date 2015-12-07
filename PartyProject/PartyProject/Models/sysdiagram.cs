@@ -12,17 +12,12 @@ namespace PartyProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerDetail
+    public partial class sysdiagram
     {
-        public int CustomerID { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public string StreetAddress { get; set; }
-        public string Town { get; set; }
-        public int County { get; set; }
-        public string Email { get; set; }
-        public Nullable<int> Phone { get; set; }
-    
-        public virtual tblLocation tblLocation { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

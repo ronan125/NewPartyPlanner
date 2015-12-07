@@ -12,19 +12,12 @@ namespace PartyProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class EntertainerDetail
+    public partial class CustView
     {
-        public int EntertainerID { get; set; }
-        public string Fistname { get; set; }
+        public string Firstname { get; set; }
         public string Lastname { get; set; }
-        public string StreetAddress { get; set; }
-        public string Town { get; set; }
+        public int LocationID { get; set; }
+        public string Location { get; set; }
         public int County { get; set; }
-        public int Phone { get; set; }
-        public string Email { get; set; }
-        public int Skill { get; set; }
-    
-        public virtual tblLocation tblLocation { get; set; }
-        public virtual tblSkill tblSkill { get; set; }
     }
 }

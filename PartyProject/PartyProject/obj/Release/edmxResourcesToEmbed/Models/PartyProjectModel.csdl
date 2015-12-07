@@ -1,43 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TeamProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TeamProjectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustomerDetails" EntityType="TeamProjectModel.CustomerDetail" />
+    <EntitySet Name="EntertainerDetails" EntityType="TeamProjectModel.EntertainerDetail" />
+    <EntitySet Name="RelatedSkills" EntityType="TeamProjectModel.RelatedSkill" />
+    <EntitySet Name="sysdiagrams" EntityType="TeamProjectModel.sysdiagram" />
+    <EntitySet Name="tblLocations" EntityType="TeamProjectModel.tblLocation" />
+    <EntitySet Name="tblSkills" EntityType="TeamProjectModel.tblSkill" />
+    <EntitySet Name="CustViews" EntityType="TeamProjectModel.CustView" />
+    <AssociationSet Name="FK_CustomerDetails_Location" Association="TeamProjectModel.FK_CustomerDetails_Location">
+      <End Role="tblLocation" EntitySet="tblLocations" />
+      <End Role="CustomerDetail" EntitySet="CustomerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntertainerDetails_Location" Association="TeamProjectModel.FK_EntertainerDetails_Location">
+      <End Role="tblLocation" EntitySet="tblLocations" />
+      <End Role="EntertainerDetail" EntitySet="EntertainerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntertainerDetails_Skill3" Association="TeamProjectModel.FK_EntertainerDetails_Skill3">
+      <End Role="tblSkill" EntitySet="tblSkills" />
+      <End Role="EntertainerDetail" EntitySet="EntertainerDetails" />
+    </AssociationSet>
+    <EntitySet Name="EntViews" EntityType="TeamProjectModel.EntView" />
+  </EntityContainer>
   <EntityType Name="CustomerDetail">
     <Key>
       <PropertyRef Name="CustomerID" />
     </Key>
     <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="StreetAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Town" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Firstname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Town" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="County" Type="Int32" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Phone" Type="Int32" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_CustomerDetails_Location" FromRole="CustomerDetails" ToRole="Location" />
+    <NavigationProperty Name="tblLocation" Relationship="TeamProjectModel.FK_CustomerDetails_Location" FromRole="CustomerDetail" ToRole="tblLocation" />
   </EntityType>
   <EntityType Name="EntertainerDetail">
     <Key>
       <PropertyRef Name="EntertainerID" />
     </Key>
     <Property Name="EntertainerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Fistname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="StreetAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Town" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fistname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Town" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="County" Type="Int32" Nullable="false" />
     <Property Name="Phone" Type="Int32" Nullable="false" />
-    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Skill1" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_EntertainerDetails_Location" FromRole="EntertainerDetails" ToRole="Location" />
-    <NavigationProperty Name="Skill" Relationship="Self.FK_EntertainerDetails_Skill3" FromRole="EntertainerDetails" ToRole="Skill" />
-  </EntityType>
-  <EntityType Name="Location">
-    <Key>
-      <PropertyRef Name="LocationID" />
-    </Key>
-    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Location1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="CustomerDetails" Relationship="Self.FK_CustomerDetails_Location" FromRole="Location" ToRole="CustomerDetails" />
-    <NavigationProperty Name="EntertainerDetails" Relationship="Self.FK_EntertainerDetails_Location" FromRole="Location" ToRole="EntertainerDetails" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Skill" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblLocation" Relationship="TeamProjectModel.FK_EntertainerDetails_Location" FromRole="EntertainerDetail" ToRole="tblLocation" />
+    <NavigationProperty Name="tblSkill" Relationship="TeamProjectModel.FK_EntertainerDetails_Skill3" FromRole="EntertainerDetail" ToRole="tblSkill" />
   </EntityType>
   <EntityType Name="RelatedSkill">
     <Key>
@@ -47,67 +60,109 @@
     <Property Name="SID" Type="Int32" />
     <Property Name="EntertainerID" Type="Int32" />
   </EntityType>
-  <EntityType Name="Skill">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblLocation">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CustomerDetails" Relationship="TeamProjectModel.FK_CustomerDetails_Location" FromRole="tblLocation" ToRole="CustomerDetail" />
+    <NavigationProperty Name="EntertainerDetails" Relationship="TeamProjectModel.FK_EntertainerDetails_Location" FromRole="tblLocation" ToRole="EntertainerDetail" />
+  </EntityType>
+  <EntityType Name="tblSkill">
     <Key>
       <PropertyRef Name="SkillID" />
     </Key>
     <Property Name="SkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Skill1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="EntertainerDetails" Relationship="Self.FK_EntertainerDetails_Skill3" FromRole="Skill" ToRole="EntertainerDetails" />
+    <Property Name="Skill" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EntertainerDetails" Relationship="TeamProjectModel.FK_EntertainerDetails_Skill3" FromRole="tblSkill" ToRole="EntertainerDetail" />
+  </EntityType>
+  <EntityType Name="CustView">
+    <Key>
+      <PropertyRef Name="Firstname" />
+      <PropertyRef Name="Lastname" />
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="County" />
+    </Key>
+    <Property Name="Firstname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LocationID" Type="Int32" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="County" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_CustomerDetails_Location">
-    <End Role="Location" Type="Self.Location" Multiplicity="1" />
-    <End Role="CustomerDetails" Type="Self.CustomerDetail" Multiplicity="*" />
+    <End Type="TeamProjectModel.tblLocation" Role="tblLocation" Multiplicity="1" />
+    <End Type="TeamProjectModel.CustomerDetail" Role="CustomerDetail" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Location">
+      <Principal Role="tblLocation">
         <PropertyRef Name="LocationID" />
       </Principal>
-      <Dependent Role="CustomerDetails">
+      <Dependent Role="CustomerDetail">
         <PropertyRef Name="County" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_EntertainerDetails_Location">
-    <End Role="Location" Type="Self.Location" Multiplicity="1" />
-    <End Role="EntertainerDetails" Type="Self.EntertainerDetail" Multiplicity="*" />
+    <End Type="TeamProjectModel.tblLocation" Role="tblLocation" Multiplicity="1" />
+    <End Type="TeamProjectModel.EntertainerDetail" Role="EntertainerDetail" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Location">
+      <Principal Role="tblLocation">
         <PropertyRef Name="LocationID" />
       </Principal>
-      <Dependent Role="EntertainerDetails">
+      <Dependent Role="EntertainerDetail">
         <PropertyRef Name="County" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_EntertainerDetails_Skill3">
-    <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
-    <End Role="EntertainerDetails" Type="Self.EntertainerDetail" Multiplicity="*" />
+    <End Type="TeamProjectModel.tblSkill" Role="tblSkill" Multiplicity="1" />
+    <End Type="TeamProjectModel.EntertainerDetail" Role="EntertainerDetail" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Skill">
+      <Principal Role="tblSkill">
         <PropertyRef Name="SkillID" />
       </Principal>
-      <Dependent Role="EntertainerDetails">
-        <PropertyRef Name="Skill1" />
+      <Dependent Role="EntertainerDetail">
+        <PropertyRef Name="Skill" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="TeamProjectEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetail" />
-    <EntitySet Name="EntertainerDetails" EntityType="Self.EntertainerDetail" />
-    <EntitySet Name="Locations" EntityType="Self.Location" />
-    <EntitySet Name="RelatedSkills" EntityType="Self.RelatedSkill" />
-    <EntitySet Name="Skills" EntityType="Self.Skill" />
-    <AssociationSet Name="FK_CustomerDetails_Location" Association="Self.FK_CustomerDetails_Location">
-      <End Role="Location" EntitySet="Locations" />
-      <End Role="CustomerDetails" EntitySet="CustomerDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_EntertainerDetails_Location" Association="Self.FK_EntertainerDetails_Location">
-      <End Role="Location" EntitySet="Locations" />
-      <End Role="EntertainerDetails" EntitySet="EntertainerDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_EntertainerDetails_Skill3" Association="Self.FK_EntertainerDetails_Skill3">
-      <End Role="Skill" EntitySet="Skills" />
-      <End Role="EntertainerDetails" EntitySet="EntertainerDetails" />
-    </AssociationSet>
-  </EntityContainer>
+  <EntityType Name="EntView">
+    <Key>
+      <PropertyRef Name="Skill" />
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="Fistname" />
+      <PropertyRef Name="Lastname" />
+      <PropertyRef Name="EntertainerID" />
+      <PropertyRef Name="StreetAddress" />
+      <PropertyRef Name="Town" />
+      <PropertyRef Name="County" />
+      <PropertyRef Name="Phone" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="SkillID" />
+    </Key>
+    <Property Name="Skill" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LocationID" Type="Int32" Nullable="false" />
+    <Property Name="Fistname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EntertainerID" Type="Int32" Nullable="false" />
+    <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Town" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="County" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Expr1" Type="Int32" Nullable="false" />
+    <Property Name="SkillID" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

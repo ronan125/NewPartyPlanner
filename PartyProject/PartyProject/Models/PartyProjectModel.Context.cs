@@ -27,8 +27,11 @@ namespace PartyProject.Models
     
         public virtual DbSet<CustomerDetail> CustomerDetails { get; set; }
         public virtual DbSet<EntertainerDetail> EntertainerDetails { get; set; }
-        public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<RelatedSkill> RelatedSkills { get; set; }
-        public virtual DbSet<Skill> Skills { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<tblLocation> tblLocations { get; set; }
+        public virtual DbSet<tblSkill> tblSkills { get; set; }
+        public virtual DbSet<CustView> CustViews { get; set; }
+        public virtual DbSet<EntView> EntViews { get; set; }
     }
 }

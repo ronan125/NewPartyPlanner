@@ -12,20 +12,17 @@ namespace PartyProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Location
+    public partial class tblSkill
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Location()
+        public tblSkill()
         {
-            this.CustomerDetails = new HashSet<CustomerDetail>();
             this.EntertainerDetails = new HashSet<EntertainerDetail>();
         }
     
-        public int LocationID { get; set; }
-        public string Location1 { get; set; }
+        public int SkillID { get; set; }
+        public string Skill { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerDetail> CustomerDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EntertainerDetail> EntertainerDetails { get; set; }
     }

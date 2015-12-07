@@ -17,7 +17,7 @@ namespace PartyProject.Controllers
         // GET: CustomerDetails
         public ActionResult Index()
         {
-            var customerDetails = db.CustomerDetails.Include(c => c.Location);
+            var customerDetails = db.CustomerDetails.Include(c => c.tblLocation);
             return View(customerDetails.ToList());
         }
 
@@ -45,7 +45,7 @@ namespace PartyProject.Controllers
         // GET: CustomerDetails/Create
         public ActionResult Create()
         {
-            ViewBag.County = new SelectList(db.Locations, "LocationID", "Location1");
+            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location");
             return View();
         }
 
@@ -63,7 +63,7 @@ namespace PartyProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.County = new SelectList(db.Locations, "LocationID", "Location1", customerDetail.County);
+            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", customerDetail.County);
             return View(customerDetail);
         }
 
@@ -79,7 +79,7 @@ namespace PartyProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.County = new SelectList(db.Locations, "LocationID", "Location1", customerDetail.County);
+            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", customerDetail.County);
             return View(customerDetail);
         }
 
@@ -96,7 +96,7 @@ namespace PartyProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.County = new SelectList(db.Locations, "LocationID", "Location1", customerDetail.County);
+            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", customerDetail.County);
             return View(customerDetail);
         }
 

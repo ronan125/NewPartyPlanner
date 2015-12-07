@@ -17,7 +17,7 @@ namespace PartyProject.Controllers
         // GET: EntertainerDetails
         public ActionResult Index()
         {
-            var entertainerDetails = db.EntertainerDetails.Include(e => e.Location).Include(e => e.Skill);
+            var entertainerDetails = db.EntertainerDetails.Include(e => e.tblLocation).Include(e => e.tblSkill);
             return View(entertainerDetails.ToList());
         }
 
@@ -45,8 +45,8 @@ namespace PartyProject.Controllers
         // GET: EntertainerDetails/Create
         public ActionResult Create()
         {
-            ViewBag.County = new SelectList(db.Locations, "LocationID", "Location1");
-            ViewBag.Skill1 = new SelectList(db.Skills, "SkillID", "Skill1");
+            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location");
+            ViewBag.Skill = new SelectList(db.tblSkills, "SkillID", "Skill");
             return View();
         }
 
@@ -55,7 +55,7 @@ namespace PartyProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EntertainerID,Fistname,Lastname,StreetAddress,Town,County,Phone,Email,Skill1")] EntertainerDetail entertainerDetail)
+        public ActionResult Create([Bind(Include = "EntertainerID,Fistname,Lastname,StreetAddress,Town,County,Phone,Email,Skill")] EntertainerDetail entertainerDetail)
         {
             if (ModelState.IsValid)
             {
@@ -64,8 +64,8 @@ namespace PartyProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.County = new SelectList(db.Locations, "LocationID", "Location1", entertainerDetail.County);
-            ViewBag.Skill1 = new SelectList(db.Skills, "SkillID", "Skill1", entertainerDetail.Skill1);
+            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", entertainerDetail.County);
+            ViewBag.Skill = new SelectList(db.tblSkills, "SkillID", "Skill", entertainerDetail.Skill);
             return View(entertainerDetail);
         }
 
@@ -81,8 +81,8 @@ namespace PartyProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.County = new SelectList(db.Locations, "LocationID", "Location1", entertainerDetail.County);
-            ViewBag.Skill1 = new SelectList(db.Skills, "SkillID", "Skill1", entertainerDetail.Skill1);
+            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", entertainerDetail.County);
+            ViewBag.Skill = new SelectList(db.tblSkills, "SkillID", "Skill", entertainerDetail.Skill);
             return View(entertainerDetail);
         }
 
@@ -91,7 +91,7 @@ namespace PartyProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EntertainerID,Fistname,Lastname,StreetAddress,Town,County,Phone,Email,Skill1")] EntertainerDetail entertainerDetail)
+        public ActionResult Edit([Bind(Include = "EntertainerID,Fistname,Lastname,StreetAddress,Town,County,Phone,Email,Skill")] EntertainerDetail entertainerDetail)
         {
             if (ModelState.IsValid)
             {
@@ -99,8 +99,8 @@ namespace PartyProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.County = new SelectList(db.Locations, "LocationID", "Location1", entertainerDetail.County);
-            ViewBag.Skill1 = new SelectList(db.Skills, "SkillID", "Skill1", entertainerDetail.Skill1);
+            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", entertainerDetail.County);
+            ViewBag.Skill = new SelectList(db.tblSkills, "SkillID", "Skill", entertainerDetail.Skill);
             return View(entertainerDetail);
         }
 

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+@model List<PartyProject.Models.EntView>
+
+
+<br/>
+<br/>
+<br/>
+<table>
+    <thead>
+        <tr>
+            <td class="">First name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>Last name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>Location &nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>Skill&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>Phone </td>
+            <td>Email</td>
+        </tr>
+    </thead>
+
+    @foreach (PartyProject.Models.EntView entry in Model)
+    {
+        <tr>
+            <td>@entry.Fistname&nbsp;&nbsp;</td>
+            <td>@entry.Lastname&nbsp;&nbsp;</td>
+            <td>@entry.StreetAddress&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>@entry.Location&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>@entry.Skill&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>@entry.Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>@entry.Email</td>
+        </tr>
+    }
+
+</table>
+
+
+
+

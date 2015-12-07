@@ -17,7 +17,7 @@ namespace PartyProject.Controllers
         // GET: Skills
         public ActionResult Index()
         {
-            return View(db.Skills.ToList());
+            return View(db.tblSkills.ToList());
         }
 
         // GET: Skills/Details/5
@@ -27,7 +27,7 @@ namespace PartyProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Skill skill = db.Skills.Find(id);
+            tblSkill skill = db.tblSkills.Find(id);
             if (skill == null)
             {
                 return HttpNotFound();
@@ -46,11 +46,11 @@ namespace PartyProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SkillID,Skill1")] Skill skill)
+        public ActionResult Create([Bind(Include = "SkillID,Skill")] tblSkill skill)
         {
             if (ModelState.IsValid)
             {
-                db.Skills.Add(skill);
+                db.tblSkills.Add(skill);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace PartyProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Skill skill = db.Skills.Find(id);
+            tblSkill skill = db.tblSkills.Find(id);
             if (skill == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace PartyProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SkillID,Skill1")] Skill skill)
+        public ActionResult Edit([Bind(Include = "SkillID,Skill")] tblSkill skill)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace PartyProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Skill skill = db.Skills.Find(id);
+            tblSkill skill = db.tblSkills.Find(id);
             if (skill == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace PartyProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Skill skill = db.Skills.Find(id);
-            db.Skills.Remove(skill);
+            tblSkill skill = db.tblSkills.Find(id);
+            db.tblSkills.Remove(skill);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
