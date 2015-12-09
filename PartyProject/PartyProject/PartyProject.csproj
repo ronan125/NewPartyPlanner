@@ -260,6 +260,8 @@
     <Content Include="Views\CustomerDetails\CustomerPortal.cshtml" />
     <Content Include="Views\EntertainerDetails\EntertainerPortal.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\CustomerDetails\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

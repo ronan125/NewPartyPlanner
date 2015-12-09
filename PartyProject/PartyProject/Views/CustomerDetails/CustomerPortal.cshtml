@@ -56,6 +56,9 @@
             <div class="panel">
 
                 <img src="~/Content/Images/Ballons.png" class="img-reponsive center-block" />
+
+                @Html.ActionLink("Customer Login", "Login", "", htmlAttributes: new { @class = "btn btn-warning btn-block" });
+
                 <a href="#" class=" btn btn-warning btn-block">Customer Login</a>
             </div>
         </div>
@@ -65,7 +68,7 @@
 
                 <img src="~/Content/Images/EntertainerLogin.bmp" class="img-reponsive center-block" />
 
-                <a href="#" class=" btn btn-warning btn-block">Register as a New Customer</a>
+                @Html.ActionLink("Register as new User", "Create", "", htmlAttributes: new { @class = "btn btn-warning btn-block" });
             </div>
         </div>
     </div>

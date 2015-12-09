@@ -16,6 +16,7 @@
           <Property Name="Town" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="County" Type="int" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="int" />
         </EntityType>
         <EntityType Name="EntertainerDetails">
@@ -229,6 +230,7 @@ warning 6002: The table/view 'TeamProject.dbo.EntView' does not have a primary k
           <Property Name="Town" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="County" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" />
           <Property Name="Phone" Type="Int32" />
           <NavigationProperty Name="tblLocation" Relationship="TeamProjectModel.FK_CustomerDetails_Location" FromRole="CustomerDetail" ToRole="tblLocation" />
         </EntityType>
@@ -370,6 +372,7 @@ warning 6002: The table/view 'TeamProject.dbo.EntView' does not have a primary k
           <EntitySetMapping Name="CustomerDetails">
             <EntityTypeMapping TypeName="TeamProjectModel.CustomerDetail">
               <MappingFragment StoreEntitySet="CustomerDetails">
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="County" ColumnName="County" />

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PartyProject.Models;
 
+
 namespace PartyProject.Controllers
 {
     public class CustomerDetailsController : Controller
@@ -15,10 +16,14 @@ namespace PartyProject.Controllers
         private TeamProjectEntities db = new TeamProjectEntities();
 
         // GET: CustomerDetails
+
         public ActionResult Index()
         {
+
             var customerDetails = db.CustomerDetails.Include(c => c.tblLocation);
-            return View(customerDetails.ToList());
+
+
+            return View(customerDetails);
         }
 
         //Get: Customer Portal
@@ -39,28 +44,55 @@ namespace PartyProject.Controllers
             {
                 return HttpNotFound();
             }
-            return View(customerDetail);
+
+            if ((string)Session["CustomerID"] == customerDetail.CustomerID.ToString())
+            {
+                return View(customerDetail);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         // GET: CustomerDetails/Create
         public ActionResult Create()
         {
-            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location");
+            if ((!(Session["Firstname"] == null)))
+            {
+                ViewBag.Message = "You are already Logged in " + Session["Firstname"];
+                return RedirectToAction("Index", "CustomerDetails");
+            }
+
+                ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location");
             return View();
         }
 
         // POST: CustomerDetails/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerID,Firstname,Lastname,StreetAddress,Town,County,Email,Phone")] CustomerDetail customerDetail)
+        public ActionResult Create([Bind(Include = "CustomerID,Firstname,Lastname,StreetAddress,Town,County,Email,Password, Phone")] CustomerDetail customerDetail)
         {
             if (ModelState.IsValid)
             {
                 db.CustomerDetails.Add(customerDetail);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                // Log in with the new record
+
+                foreach (CustomerDetail c in db.CustomerDetails)
+                {
+                    if ((c.Email == customerDetail.Email) && (c.Password == customerDetail.Password))
+                    {
+                        Session["Firstname"] = c.Firstname.ToString();
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                return View("CustomerPortal");
             }
 
             ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", customerDetail.County);
@@ -87,14 +119,14 @@ namespace PartyProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerID,Firstname,Lastname,StreetAddress,Town,County,Email,Phone")] CustomerDetail customerDetail)
+
+        public ActionResult Edit([Bind(Include = "CustomerID,Firstname,Lastname,StreetAddress,Town,County,Email,Password,Phone")] CustomerDetail customerDetail)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(customerDetail).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect(customerDetail.CustomerID.ToString());
             }
             ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", customerDetail.County);
             return View(customerDetail);
@@ -133,6 +165,27 @@ namespace PartyProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Login(CustomerDetail customer)
+        {
+
+            foreach (CustomerDetail c in db.CustomerDetails) {
+                if ((c.Email == customer.Email) && (c.Password == customer.Password)){
+                    Session["Firstname"] = c.Firstname.ToString();
+                    Session["CustomerID"] = c.CustomerID.ToString();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View("CustomerPortal");
         }
     }
 }

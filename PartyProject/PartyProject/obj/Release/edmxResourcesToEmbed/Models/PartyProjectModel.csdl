@@ -33,6 +33,7 @@
     <Property Name="Town" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="County" Type="Int32" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" />
     <Property Name="Phone" Type="Int32" />
     <NavigationProperty Name="tblLocation" Relationship="TeamProjectModel.FK_CustomerDetails_Location" FromRole="CustomerDetail" ToRole="tblLocation" />
   </EntityType>

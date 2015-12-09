@@ -4,6 +4,7 @@
     <EntitySetMapping Name="CustomerDetails">
       <EntityTypeMapping TypeName="TeamProjectModel.CustomerDetail">
         <MappingFragment StoreEntitySet="CustomerDetails">
+          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="County" ColumnName="County" />

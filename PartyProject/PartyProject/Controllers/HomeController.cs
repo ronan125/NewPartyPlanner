@@ -38,7 +38,9 @@ namespace PartyProject.Controllers
         public ActionResult Search()
         {
 
-            int locationID;
+            if ((!(Session["Firstname"] == null))) { 
+
+                int locationID;
             int.TryParse(Request.Form["Locs"], out locationID);
 
             int skillID;
@@ -50,7 +52,16 @@ namespace PartyProject.Controllers
 
             return View("Search",  db.EntViews.Where(element => (locationID == 0) ? true : element.LocationID == locationID).
                                      Where(element => (skillID == 0) ? true : element.SkillID == skillID).ToList());
+            }
+            else
+            { 
+                return RedirectToAction("Login", "CustomerDetails");
+            }
+        }
 
+        public ActionResult Logoff() {
+            Session["Firstname"] = null;
+            return RedirectToAction("Index");
         }
     }
 }
