@@ -19,11 +19,19 @@ namespace PartyProject.Controllers
 
         public ActionResult Index()
         {
+            if ((!(Session["CustomerID"] == null)))
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
-            var customerDetails = db.CustomerDetails.Include(c => c.tblLocation);
+            else if ((!(Session["EntertainerID"] == null)))
+            {
+                ViewBag.Message = "You are already Logged in " + Session["Firstname"];
+                return RedirectToAction("Login", "CustomerDetails");
+            }
 
 
-            return View(customerDetails);
+            return View("Login");
         }
 
         //Get: Customer Portal
