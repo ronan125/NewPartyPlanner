@@ -111,9 +111,18 @@ namespace PartyProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", entertainerDetail.County);
-            ViewBag.Skill = new SelectList(db.tblSkills, "SkillID", "Skill", entertainerDetail.Skill);
-            return View(entertainerDetail);
+
+            if ((string)Session["EntertainerID"] == entertainerDetail.EntertainerID.ToString())
+            {
+                ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", entertainerDetail.County);
+                ViewBag.Skill = new SelectList(db.tblSkills, "SkillID", "Skill", entertainerDetail.Skill);
+                return View(entertainerDetail);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+
         }
 
         // POST: EntertainerDetails/Edit/5

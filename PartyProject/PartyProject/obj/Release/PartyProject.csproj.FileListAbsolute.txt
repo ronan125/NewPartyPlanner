@@ -173,3 +173,4 @@ C:\Users\Adam\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\Ant
 C:\Users\Adam\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\bin\Newtonsoft.Json.xml
 C:\Users\Adam\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\obj\Release\PartyProject.dll
 C:\Users\Adam\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\obj\Release\PartyProject.pdb
+C:\Users\Adam\Documents\GitHub\NewPartyPlanner\PartyProject\PartyProject\obj\Release\PartyProject.csprojResolveAssemblyReference.cache

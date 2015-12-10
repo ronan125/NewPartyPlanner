@@ -119,8 +119,17 @@ namespace PartyProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", customerDetail.County);
-            return View(customerDetail);
+
+            if ((string)Session["CustomerID"] == customerDetail.CustomerID.ToString())
+            {
+                ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", customerDetail.County);
+                return View(customerDetail);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+
         }
 
         // POST: CustomerDetails/Edit/5
@@ -194,7 +203,8 @@ namespace PartyProject.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            return View("CustomerPortal");
+            return Redirect("Login");
+            ModelState.AddModelError("", "Username or Password is Incorrect!");
         }
     }
 }
