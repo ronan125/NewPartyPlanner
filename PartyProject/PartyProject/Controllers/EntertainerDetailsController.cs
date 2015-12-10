@@ -1,3 +1,4 @@
+﻿
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,8 +18,20 @@ namespace PartyProject.Controllers
         // GET: EntertainerDetails
         public ActionResult Index()
         {
-            var entertainerDetails = db.EntertainerDetails.Include(e => e.tblLocation).Include(e => e.tblSkill);
-            return View(entertainerDetails.ToList());
+
+            if ((!(Session["EntertainerID"] == null)))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            else if ((!(Session["CustomerID"] == null)))
+            {
+                ViewBag.Message = "You are already Logged in " + Session["Firstname"];
+                return RedirectToAction("Login", "EntertainerDetails");
+            }
+
+
+            return View("Login");
         }
 
         //Get: Entertainer Portal
@@ -39,7 +52,14 @@ namespace PartyProject.Controllers
             {
                 return HttpNotFound();
             }
-            return View(entertainerDetail);
+            if ((string)Session["EntertainerID"] == entertainerDetail.EntertainerID.ToString())
+            {
+                return View(entertainerDetail);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         // GET: EntertainerDetails/Create
@@ -55,13 +75,24 @@ namespace PartyProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EntertainerID,Fistname,Lastname,StreetAddress,Town,County,Phone,Email,Skill")] EntertainerDetail entertainerDetail)
+        public ActionResult Create([Bind(Include = "EntertainerID,Fistname,Lastname,StreetAddress,Town,County,Phone,Email,Password,Skill")] EntertainerDetail entertainerDetail)
         {
             if (ModelState.IsValid)
             {
                 db.EntertainerDetails.Add(entertainerDetail);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Session["CustomerID"] = null;
+
+                foreach (EntertainerDetail e in db.EntertainerDetails)
+                {
+                    if ((e.Email == entertainerDetail.Email) && (e.Password == entertainerDetail.Password))
+                    {
+                        Session["Firstname"] = e.Fistname.ToString();
+                        Session["EntertainerID"] = e.EntertainerID.ToString();
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                return View("EntertainerPortal");
             }
 
             ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", entertainerDetail.County);
@@ -91,13 +122,13 @@ namespace PartyProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EntertainerID,Fistname,Lastname,StreetAddress,Town,County,Phone,Email,Skill")] EntertainerDetail entertainerDetail)
+        public ActionResult Edit([Bind(Include = "EntertainerID,Fistname,Lastname,StreetAddress,Town,County,Phone,Email,Password,Skill")] EntertainerDetail entertainerDetail)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(entertainerDetail).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect(entertainerDetail.EntertainerID.ToString());
             }
             ViewBag.County = new SelectList(db.tblLocations, "LocationID", "Location", entertainerDetail.County);
             ViewBag.Skill = new SelectList(db.tblSkills, "SkillID", "Skill", entertainerDetail.Skill);
@@ -116,7 +147,14 @@ namespace PartyProject.Controllers
             {
                 return HttpNotFound();
             }
-            return View(entertainerDetail);
+            if ((string)Session["EntertainerID"] == entertainerDetail.EntertainerID.ToString())
+            {
+                return View(entertainerDetail);
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         // POST: EntertainerDetails/Delete/5
@@ -137,6 +175,31 @@ namespace PartyProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Login(EntertainerDetail ent)
+        {
+
+            foreach (EntertainerDetail e in db.EntertainerDetails)
+            {
+                if ((e.Email == ent.Email) && (e.Password == ent.Password))
+                {
+                    Session["Firstname"] = e.Fistname.ToString();
+                    Session["EntertainerID"] = e.EntertainerID.ToString();
+                    Session["CustomerID"] = null; // incase a Customer is logged in already
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return Redirect("Login");
+            ModelState.AddModelError("", "Username or Password is Incorrect!");
         }
     }
 }
