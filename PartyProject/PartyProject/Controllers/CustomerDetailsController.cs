@@ -190,6 +190,7 @@ namespace PartyProject.Controllers
                 if ((c.Email == customer.Email) && (c.Password == customer.Password)){
                     Session["Firstname"] = c.Firstname.ToString();
                     Session["CustomerID"] = c.CustomerID.ToString();
+                    Session["EntertainerID"] = null; // This is to log out any exsisting entertainer than may be logged in
                     return RedirectToAction("Index", "Home");
                 }
             }
