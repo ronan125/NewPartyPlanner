@@ -131,7 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerDetailsController.cs" />
-    <Compile Include="Controllers\EntertainerDetailsController.cs" />
+    <Compile Include="fonts\EntertainerDetailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -213,6 +213,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\PartyPlannerNCI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -262,6 +263,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\CustomerDetails\Login.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\EntertainerDetails\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

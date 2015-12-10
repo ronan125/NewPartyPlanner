@@ -33,7 +33,7 @@
     <Property Name="Town" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="County" Type="Int32" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="Phone" Type="Int32" />
     <NavigationProperty Name="tblLocation" Relationship="TeamProjectModel.FK_CustomerDetails_Location" FromRole="CustomerDetail" ToRole="tblLocation" />
   </EntityType>
@@ -49,6 +49,7 @@
     <Property Name="County" Type="Int32" Nullable="false" />
     <Property Name="Phone" Type="Int32" Nullable="false" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" />
     <Property Name="Skill" Type="Int32" Nullable="false" />
     <NavigationProperty Name="tblLocation" Relationship="TeamProjectModel.FK_EntertainerDetails_Location" FromRole="EntertainerDetail" ToRole="tblLocation" />
     <NavigationProperty Name="tblSkill" Relationship="TeamProjectModel.FK_EntertainerDetails_Skill3" FromRole="EntertainerDetail" ToRole="tblSkill" />

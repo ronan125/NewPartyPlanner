@@ -1,16 +1,33 @@
 ﻿
 @if ((!(Session["Firstname"] == null)))
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    if (!(Session["CustomerID"] == null))
     {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Hello " + Session["Firstname"] + "!", "Details/"+Session["CustomerID"],  "CustomerDetails", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @Html.ActionLink("Hello " + Session["Firstname"] + "!", "Details/" + Session["CustomerID"], "CustomerDetails", routeValues: null, htmlAttributes: new { title = "Log Out" })
             </li>
             <li>@Html.ActionLink("Log Off", "Logoff", "Home", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
         </ul>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.ActionLink("Hello " + Session["Firstname"] + "!", "Details/" + Session["EntertainerID"], "EntertainerDetails", routeValues: null, htmlAttributes: new { title = "Log Out" })
+                </li>
+                <li>@Html.ActionLink("Log Off", "Logoff", "Home", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+            </ul>
+        }
     }
 }
 else
@@ -18,7 +35,8 @@ else
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Register", "Create", "CustomerDetails", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Register as Entertainer", "Create", "EntertainerDetails", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "CustomerDetails", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Customer Log in", "Login", "CustomerDetails", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Entertainer Log in", "Login", "EntertainerDetails", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
 

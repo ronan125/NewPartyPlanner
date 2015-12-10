@@ -19,6 +19,7 @@
     <EntitySetMapping Name="EntertainerDetails">
       <EntityTypeMapping TypeName="TeamProjectModel.EntertainerDetail">
         <MappingFragment StoreEntitySet="EntertainerDetails">
+          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Skill" ColumnName="Skill" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />

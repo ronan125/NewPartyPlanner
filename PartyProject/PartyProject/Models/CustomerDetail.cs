@@ -15,7 +15,6 @@ namespace PartyProject.Models
     
     public partial class CustomerDetail
     {
-        
         public int CustomerID { get; set; }
 
 
@@ -41,7 +40,7 @@ namespace PartyProject.Models
         [Required(ErrorMessage = "Password is Required")]
         public string Password { get; set; }
         public Nullable<int> Phone { get; set; }
-    
+
         public virtual tblLocation tblLocation { get; set; }
     }
 }

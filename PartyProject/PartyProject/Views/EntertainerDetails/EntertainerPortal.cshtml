@@ -62,7 +62,7 @@
 
             <img src="~/Content/Images/Ballons.png" class="img-reponsive center-block" />
 
-            <a href="#" class=" btn btn-warning btn-block">Entertainer Login</a>
+            @Html.ActionLink("Entertainer Login", "Login", "", htmlAttributes: new { @class = "btn btn-warning btn-block" });
         </div>
     </div>
 
@@ -71,7 +71,8 @@
 
             <img src="~/Content/Images/EntertainerLogin.bmp" class="img-reponsive center-block" />
 
-            <a href="#" class=" btn btn-warning btn-block">Register as a New Entertainer</a>
+            @Html.ActionLink("Register as new Enterainer", "Create", "", htmlAttributes: new { @class = "btn btn-warning btn-block" });
+            
         </div>
     </div>
 </div>
