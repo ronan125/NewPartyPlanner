@@ -23,50 +23,53 @@
             <img src="~/Content/Images/PartyPlanner.jpg" class="img-responsive center-block" />
         </div>
     </div>
-</div>
 
-
-
-<div class="col-sm-12 text-center">
-
-
-    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
-
-    {
-        @Html.DropDownList("Locs", (SelectList)ViewBag.Locs, "Select Location", new { @class = "form-control dropdown-db" })  <br /><br />
-        @Html.DropDownList("Skil", (SelectList)ViewBag.Skil, "Select Entertainer", new { @class = "form-control dropdown-db" }) <br /><br />
-
-        <input type="Submit" name="Search" value="Search" class="btn btn-primary " />
-    }
-
-    <br />
-    <br />
-    <br />
-    <br />
-
-</div>
-
-
-
-
-
-<div class="row">
-    <div class="col-md-6">
-        <div class="panel">
-
-            <img src="~/Content/Images/Ballons.png" class="img-reponsive center-block" />
-
-            @Html.ActionLink("Customer Portal", "CustomerPortal", "CustomerDetails", null, new { @class = "btn btn-warning btn-block" })
-        </div>
+    <div class="row">
+    <div class="col-md-4">
     </div>
 
-    <div class="col-md-6">
-        <div class="panel">
+    <div class="col-md-4">
 
-            <img src="~/Content/Images/EntertainerLogin.bmp" class="img-reponsive center-block" />
 
-            @Html.ActionLink("Entertainer Portal", "EntertainerPortal", "EntertainerDetails", null, new { @class = "btn btn-warning btn-block" })
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+
+            {
+            @Html.DropDownList("Locs", (SelectList)ViewBag.Locs, "Select Location", new { @class = "form-control dropdown-db center" })  <br /><br />
+                @Html.DropDownList("Skil", (SelectList)ViewBag.Skil, "Select Entertainer", new { @class = "form-control dropdown-db center" }) <br /><br />
+
+                <input type="Submit" name="Search" value="Search" class="btn btn-primary " />
+        }
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+    </div>
+        <div class="col-md-4">
         </div>
+
+
     </div>
 
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel">
+
+                <img src="~/Content/Images/Ballons.png" class="img-reponsive center-block" />
+
+                @Html.ActionLink("Customer Portal", "CustomerPortal", "CustomerDetails", null, new { @class = "btn btn-warning btn-block" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel">
+
+                <img src="~/Content/Images/EntertainerLogin.bmp" class="img-reponsive center-block" />
+
+                @Html.ActionLink("Entertainer Portal", "EntertainerPortal", "EntertainerDetails", null, new { @class = "btn btn-warning btn-block" })
+            </div>
+        </div>
+
+    </div>
 </div>

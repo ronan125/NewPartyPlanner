@@ -97,6 +97,7 @@ namespace PartyProject.Controllers
                     if ((c.Email == customerDetail.Email) && (c.Password == customerDetail.Password))
                     {
                         Session["Firstname"] = c.Firstname.ToString();
+                        Session["CustomerID"] = c.CustomerID.ToString();
                         return RedirectToAction("Index", "Home");
                     }
                 }
